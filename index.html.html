@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>5 Months With You ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#f7c8d0,#f5e6b3,#e3e3e3);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card{
+  width:90%;
+  max-width:420px;
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(18px);
+  border-radius:22px;
+  padding:25px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.25);
+  animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+  text-align:center;
+  font-weight:600;
+  color:#7a2c40;
+  margin-bottom:6px;
+}
+
+.sub{
+  text-align:center;
+  font-size:0.85rem;
+  color:#555;
+  margin-bottom:20px;
+}
+
+.riddle{
+  font-size:1rem;
+  text-align:center;
+  color:#333;
+  margin-bottom:15px;
+  min-height:60px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:14px;
+  outline:none;
+  font-size:1rem;
+  background:rgba(255,255,255,0.7);
+  margin-bottom:12px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:14px;
+  font-size:1rem;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#d6336c,#f1b0c8);
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 8px 20px rgba(214,51,108,0.4);
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+.next-btn{
+  display:none;
+  margin-top:10px;
+  background:linear-gradient(135deg,#c9a24d,#e6d08c);
+  box-shadow:0 8px 20px rgba(201,162,77,0.4);
+}
+
+.poem{
+  display:none;
+  margin-top:18px;
+  padding:15px;
+  background:rgba(255,255,255,0.5);
+  border-radius:16px;
+  color:#4a1c2e;
+  animation:reveal 0.8s ease forwards;
+}
+
+@keyframes reveal{
+  from{opacity:0;transform:translateY(15px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.shake{
+  animation:shake 0.3s;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  50%{transform:translateX(5px);}
+  75%{transform:translateX(-5px);}
+  100%{transform:translateX(0);}
+}
+
+.footer{
+  text-align:center;
+  font-size:0.75rem;
+  color:#777;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1> Happy 5 Months Anniversary Darling </h1>
+  <div class="sub">I Love You Bchha 💕</div>
+
+  <div class="riddle" id="riddle"></div>
+
+  <input id="answer" placeholder="Type your answer…" autocomplete="off">
+
+  <button id="unlockBtn" onclick="check()">Unlock</button>
+  <button class="next-btn" id="nextBtn" onclick="next()">Next</button>
+
+  <div class="poem" id="poem"></div>
+
+  <div class="footer">Pink promises • Golden moments • Silver forever</div>
+</div>
+
+<script>
+const data = [
+{
+  riddle:"Aapka Subh naam? ",
+  answer:"rashu",
+  poem:`Aap ke lambe kaale baalon mein ek baat si hai, 🖤✨</br>
+  Unki khushboo mein koi shaam si baat si hai. 🌙🌸</br>
+  Paas aao toh dil thehar sa jaata hai, 🤍</br>
+  Shayad isi liye woh khushboo bhi itni khaas si hai. 💫💖`
+},
+{
+  riddle:"aapki kis cheez pr mai fida hua tha sabse phle... (english me likhna)? ",
+  answer:"eyes",
+  poem:`Aap ki aankhon mein ek narmi si baat hai, 👀✨</br>
+  Dekhun toh lagta hai sab theek-thaak hai. 🌸</br>
+  Bina kuch kahe bhi keh jaati hain bahut, 💭❤️</br>
+  Shayad isi liye yeh aankhen khaas hai. 💖`
+},
+{
+  riddle:"sbse phle maine aapko kis side name se bulana chalu kiya tha? (sweetheart/ darling/ bchha / etc..?🤍",
+  answer:"darling",
+  poem:`Aap ke hothon ki muskaan mein ek baat si hai, ✨</br>
+  Jo bin kahe bhi dil ko chhoo jaati hai.</br>
+  Ek pal ke liye jo woh muskurā dein, 😊</br>
+  Toh lagta hai jaise duniya thodi khoobsurat ho jaati hai. 💖💫`
+},
+{
+  riddle:"Simple cheez jo zindagi better bana deti hai? ✨",
+  answer:"mai",
+  poem:`Aap ki naak ki masoomiyat mein ek baat si hai, ✨</br>
+  Chehre pe jo khamoshi ko bhi pyaar bana jaati hai.</br>
+  Na zyada tez, na bilkul hi chup-chaap,</br>
+  Bas aap jaisi — isi liye woh bhi khaas si hai. 💖💫`
+},
+{
+  riddle:"Distance ke bawajood jo paas lagta hai…? 🌙",
+  answer:"mai",
+  poem:`Aap ki kamar ki nazakat mein ek baat si hai, ✨</br>
+  Chaal mein jo khud-ba-khud ek ada aa jaati hai.</br>
+  Na dikhawa, na koi shor sa andaaz,</br>
+  Bas aap chalti ho — aur baat ban jaati hai. 💖💫`
+},
+{
+  riddle:"Mera favourite song ka reason kaun hai? 🎶",
+  answer:"mai",
+  poem:`Aap ka mera haath pakadne ka andaaz hi kuch khaas hai, 🤝✨</br>
+  Us ek lamhe mein hi poori duniya paas hai.</br>
+  Na zyada zor, na chhodne ka darr,</br>
+  Bas us pakad mein hi har bharosa saath hai. 💖💫`
+},
+{
+  riddle:"5 mahine mein dil kis ka ho gaya? 😎",
+  answer:"mera",
+  poem:`Aap sirf chehra ya andaaz nahi,</br>
+  Aap poori ek khoobsurat kahaani ho. ✨</br>
+  Aap ki sambhaal, aap ki saadgi mein,</br>
+  Jaise koi anmol si nishaani ho. 💎🤍</br>
+  </br>
+  Poora wajood hi kuch khaas sa hai,</br>
+  Har chhoti baat mein bhi pyaar bhara hai.</br>
+  Is bheed bhari duniya mein sach kahun,</br>
+  Aap waqai ek precious gem ho — jo bas mera hai. 💖✨`
+}
+];
+
+let i = 0;
+
+const riddle = document.getElementById("riddle");
+const poem = document.getElementById("poem");
+const input = document.getElementById("answer");
+const unlockBtn = document.getElementById("unlockBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function load(){
+  riddle.innerHTML = data[i].riddle;
+  input.value = "";
+  poem.style.display="none";
+  nextBtn.style.display="none";
+  unlockBtn.style.display="block";
+  input.style.display="block";
+}
+
+function check(){
+  if(input.value.trim().toLowerCase() === data[i].answer){
+    poem.style.display="block";
+    poem.innerHTML=data[i].poem;
+    unlockBtn.style.display="none";
+    nextBtn.style.display="block";
+  } else {
+    input.classList.add("shake");
+    setTimeout(()=>input.classList.remove("shake"),300);
+  }
+}
+
+function next(){
+  i++;
+  if(i === data.length){
+    riddle.innerHTML="Unlocked. Just us. ♾️";
+    input.style.display="none";
+    unlockBtn.style.display="none";
+    nextBtn.style.display="none";
+    poem.style.display="block";
+    poem.innerHTML="5 mhine poore ho gye fir bhi ye bs shuruaat hi h bchha... 💖";
+  } else {
+    load();
+  }
+}
+
+load();
+</script>
+
+</body>
+</html>
